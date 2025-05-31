@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 270 91% 65%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 270 91% 65%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 270 91% 65%;
+    --radius: 0.75rem;
+    
+    /* Custom PlayStation colors */
+    --ps-purple: 270 91% 65%;
+    --ps-purple-dark: 270 91% 45%;
+    --ps-white: 0 0% 100%;
+    --ps-gray: 240 5% 64.9%;
+    --ps-dark: 240 10% 3.9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', monospace;
+  }
+}
+
+@layer components {
+  .ps-gradient {
+    background: linear-gradient(135deg, hsl(var(--ps-purple)) 0%, hsl(var(--ps-purple-dark)) 50%, hsl(var(--ps-dark)) 100%);
+  }
+  
+  .ps-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border rounded-lg p-6 shadow-lg;
+    background: linear-gradient(145deg, hsl(var(--card))/0.9, hsl(var(--card))/0.7);
+  }
+  
+  .ps-button {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg;
+    font-family: 'Orbitron', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .ps-button-secondary {
+    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg border border-border;
+    font-family: 'Orbitron', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .ghost-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    background: linear-gradient(45deg, hsl(var(--ps-purple)), hsl(var(--ps-white)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px hsl(var(--ps-purple))/0.5;
+  }
+  
+  .floating-animation {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  .pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .bounce-animation {
+    animation: bounce 1s infinite;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes victory-sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+.victory-sparkle {
+  animation: victory-sparkle 1.5s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary)/0.8);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
